@@ -1,15 +1,16 @@
 <script>
 	// @ts-nocheck
-
+	import { resultadoSuma } from '../helpers/Store.js';
 	export let placeholder = '';
-	export let value = '';
+	export let value = 0;
 
 	const handleInput = (event) => {
 		value = parseInt(event.target.value);
+		resultadoSuma.set(NaN);
 	};
 </script>
 
-<input {placeholder} bind:value type="number" on:input={handleInput} />
+<input {placeholder} value={isNaN(value) ? '' : value} type="number" on:input={handleInput} />
 
 <style>
 	input {

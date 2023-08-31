@@ -1,10 +1,13 @@
 <script>
-	export let resultado = '';
+	import { resultadoSuma } from '../helpers/Store.js';
+	let resultado = NaN;
+	const asignar = resultadoSuma.subscribe((valor) => {
+		resultado = valor;
+	});
+	$: console.log(resultado);
 </script>
 
-{#if resultado === ''}
-	<p>Ingrese los numeros para realizar su primer suma</p>
-{:else}
+{#if !isNaN(resultado)}
 	<p>El resultado de la suma es: {resultado}</p>
 {/if}
 
